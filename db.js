@@ -8,6 +8,8 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT || 5432,
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+    connectionTimeoutMillis: 5000,
 });
 
 // Tester la connexion
@@ -17,8 +19,16 @@ pool.on('connect', () => {
 
 pool.on('error', (err) => {
     console.error('❌ Erreur de connexion à la base de données:', err);
-    process.exit(-1);
+    // Ne pas arrêter le serveur, juste logger l'erreur
+});
+
+// Test de connexion au démarrage
+pool.query('SELECT NOW()', (err, res) => {
+    if (err) {
+        console.error('❌ Erreur lors du test de connexion:', err.message);
+    } else {
+        console.log('✅ Test de connexion réussi:', res.rows[0].now);
+    }
 });
 
 module.exports = pool;
-
