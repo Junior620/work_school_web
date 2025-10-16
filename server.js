@@ -245,6 +245,24 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'Serveur en ligne' });
 });
 
+// Route racine pour tester que le serveur fonctionne
+app.get('/', (req, res) => {
+    res.send(`
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Gestionnaire de Stock</title>
+        </head>
+        <body>
+            <h1>🚀 Serveur opérationnel !</h1>
+            <p>Port: ${PORT}</p>
+            <p>Environnement: ${process.env.NODE_ENV || 'development'}</p>
+            <p><a href="/api/health">Test API Health</a></p>
+        </body>
+        </html>
+    `);
+});
+
 // Démarrer le serveur sur 0.0.0.0 pour permettre à Nginx de se connecter
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Serveur démarré sur le port ${PORT}`);
