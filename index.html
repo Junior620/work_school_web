@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./asset/index.css">
+    <title>Gestionnaire de Stock - Dashboard</title>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <span class="logo">📦</span>
+                <h1>Stock Manager</h1>
+            </div>
+            <div class="user-section">
+                <span class="user-name" id="userName">Utilisateur</span>
+                <button class="logout-btn" id="logoutBtn">Déconnexion</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-info">
+                    <h3>Total Produits</h3>
+                    <p class="stat-value" id="totalProducts">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-info">
+                    <h3>Valeur Totale</h3>
+                    <p class="stat-value" id="totalValue">0 €</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⚠️</div>
+                <div class="stat-info">
+                    <h3>Stock Faible</h3>
+                    <p class="stat-value" id="lowStock">0</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <h3>En Stock</h3>
+                    <p class="stat-value" id="inStock">0</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Form -->
+        <div class="form-card">
+            <h2 id="formTitle">Ajouter un Produit</h2>
+            <form id="productForm">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="productName">Nom du produit</label>
+                        <input type="text" id="productName" placeholder="Ex: Ordinateur portable" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="productCategory">Catégorie</label>
+                        <select id="productCategory" required>
+                            <option value="">Sélectionner une catégorie</option>
+                            <option value="Électronique">Électronique</option>
+                            <option value="Vêtements">Vêtements</option>
+                            <option value="Alimentation">Alimentation</option>
+                            <option value="Mobilier">Mobilier</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="productPrice">Prix (€)</label>
+                        <input type="number" id="productPrice" placeholder="0.00" step="0.01" min="0" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="productQuantity">Quantité</label>
+                        <input type="number" id="productQuantity" placeholder="0" min="0" required>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" placeholder="Description du produit..." rows="3"></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <span>➕</span> Ajouter
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="cancelBtn" style="display: none;">
+                        <span>✖️</span> Annuler
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Search and Filter -->
+        <div class="toolbar">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Rechercher un produit...">
+            </div>
+            <div class="filter-box">
+                <select id="filterCategory">
+                    <option value="">Toutes les catégories</option>
+                    <option value="Électronique">Électronique</option>
+                    <option value="Vêtements">Vêtements</option>
+                    <option value="Alimentation">Alimentation</option>
+                    <option value="Mobilier">Mobilier</option>
+                    <option value="Autre">Autre</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="table-card">
+            <h2>Liste des Produits</h2>
+            <div class="table-wrapper">
+                <table id="productsTable">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Catégorie</th>
+                            <th>Prix</th>
+                            <th>Quantité</th>
+                            <th>Valeur</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productsBody">
+                        <tr class="empty-state">
+                            <td colspan="7">
+                                <div class="empty-message">
+                                    <span class="empty-icon">📦</span>
+                                    <p>Aucun produit dans le stock</p>
+                                    <small>Commencez par ajouter votre premier produit</small>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="./asset/index.js"></script>
+</body>
+</html>
+

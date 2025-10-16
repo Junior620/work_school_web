@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./asset/auth.css">
+    <title>Connexion - Gestionnaire de Stock</title>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo">📦</div>
+                <h1>Bienvenue</h1>
+                <p>Connectez-vous à votre compte</p>
+            </div>
+
+            <form id="loginForm" class="auth-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="votreemail@exemple.com" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberMe">
+                        <span>Se souvenir de moi</span>
+                    </label>
+                    <a href="#" class="forgot-link">Mot de passe oublié?</a>
+                </div>
+
+                <button type="submit" class="auth-btn">Se connecter</button>
+            </form>
+
+            <div class="divider">
+                <span>OU</span>
+            </div>
+
+            <div class="social-login">
+                <button type="button" class="social-btn google">
+                    <span>🔍</span> Continuer avec Google
+                </button>
+                <button type="button" class="social-btn github">
+                    <span>💻</span> Continuer avec GitHub
+                </button>
+            </div>
+
+            <div class="auth-footer">
+                <p>Vous n'avez pas de compte? <a href="register.html">Inscrivez-vous</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./asset/login.js"></script>
+</body>
+</html>
+
