@@ -245,9 +245,9 @@ app.get('/api/health', (req, res) => {
     res.json({ status: 'OK', message: 'Serveur en ligne' });
 });
 
-// Démarrer le serveur
-app.listen(PORT, () => {
-    console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
-    console.log(`📊 Base de données: ${process.env.DB_NAME}`);
+// Démarrer le serveur sur 0.0.0.0 pour permettre à Nginx de se connecter
+app.listen(PORT, '0.0.0.0', () => {
+    console.log(`🚀 Serveur démarré sur le port ${PORT}`);
+    console.log(`📊 Base de données: ${process.env.DB_NAME || 'non configurée'}`);
+    console.log(`🌍 Environnement: ${process.env.NODE_ENV || 'development'}`);
 });
-
