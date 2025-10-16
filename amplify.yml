@@ -1,0 +1,22 @@
+version: 1
+frontend:
+  phases:
+    build:
+      commands:
+        - echo "Déploiement des fichiers statiques"
+        - echo "Aucune étape de build nécessaire"
+  artifacts:
+    baseDirectory: /
+    files:
+      - '**/*'
+    excludePaths:
+      - node_modules/**/*
+      - .git/**/*
+      - server.js
+      - db.js
+      - .env
+      - package.json
+      - package-lock.json
+  cache:
+    paths: []
+
