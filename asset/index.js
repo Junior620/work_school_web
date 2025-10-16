@@ -1,5 +1,7 @@
-// Configuration de l'API
-const API_URL = 'http://localhost:3000/api';
+// Configuration de l'API - Détection automatique de l'environnement
+const API_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:3000/api'
+    : '/api';  // En production sur AWS, utiliser le même domaine
 
 // Variables globales
 let products = [];
@@ -291,4 +293,3 @@ function showToast(message, type = 'success') {
         toast.classList.remove('show');
     }, 3000);
 }
-

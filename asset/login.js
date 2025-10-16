@@ -1,5 +1,7 @@
-// Configuration de l'API
-const API_URL = 'http://localhost:3000/api';
+// Configuration de l'API - Détection automatique de l'environnement
+const API_URL = window.location.hostname === 'localhost'
+    ? 'http://localhost:3000/api'
+    : '/api';  // En production sur AWS, utiliser le même domaine
 
 // Gestion de la connexion
 document.addEventListener('DOMContentLoaded', () => {
@@ -114,4 +116,3 @@ function showNotification(message, type = 'info') {
         setTimeout(() => notification.remove(), 300);
     }, 3000);
 }
-
