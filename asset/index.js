@@ -1,7 +1,7 @@
 // Configuration de l'API - Détection automatique de l'environnement
 const API_URL = window.location.hostname === 'localhost'
     ? 'http://localhost:3000/api'
-    : 'https://gestionnaire-stock-api.azurewebsites.net/api';  // URL de l'API Azure
+    : 'https://gestionnaire-stock-api-2025.azurewebsites.net/api';  // URL de l'API Azure
 
 // Variables globales
 let products = [];
