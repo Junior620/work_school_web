@@ -1,7 +1,7 @@
 // Configuration de l'API - Détection automatique de l'environnement
 const API_URL = window.location.hostname === 'localhost'
     ? 'http://localhost:3000/api'
-    : '/api';  // En production sur AWS, utiliser le même domaine
+    : 'https://gestionnaire-stock-api.azurewebsites.net/api';  // URL de l'API Azure
 
 // Gestion de l'inscription
 document.addEventListener('DOMContentLoaded', () => {
