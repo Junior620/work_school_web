@@ -8,7 +8,10 @@ const pool = new Pool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     port: process.env.DB_PORT || 5432,
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+    // Forcer SSL si c'est une connexion Azure (contient .azure.com) ou en production
+    ssl: (process.env.DB_HOST && process.env.DB_HOST.includes('.azure.com')) || process.env.NODE_ENV === 'production'
+        ? { rejectUnauthorized: false }
+        : false,
     connectionTimeoutMillis: 5000,
 });
 
